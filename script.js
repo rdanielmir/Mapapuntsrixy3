@@ -1018,9 +1018,13 @@ function confirmDeletePoint() {
 
 function closePointModal() {
     pointModal.classList.add('hidden');
-    state.currentPointId = null;
+    // No resetear currentPointId aquí para mantener la selección
     state.currentPointImageDataUrl = null;
     removePointHighlight();
+    // Volver a resaltar el punto actual si existe
+    if (state.currentPointId) {
+        highlightPoint(state.currentPointId);
+    }
 }
 
 function highlightPoint(pointId) {
